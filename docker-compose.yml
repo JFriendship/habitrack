@@ -17,3 +17,15 @@ services:
       --host 0.0.0.0
       --port 8000
       --reload
+  
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: habits
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
