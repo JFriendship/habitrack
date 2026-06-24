@@ -1,6 +1,5 @@
 from app.repositories.user_repository import get_user_by_email, get_user_by_id, create_user
 
-# Make sure the database updates
 def test_get_user_by_email(db_session):
     assert(get_user_by_email(db_session, "fake_email@gmail.com") == None)
 
