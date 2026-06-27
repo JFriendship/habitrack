@@ -11,6 +11,7 @@ from app.db.database import Base
 # imports for alembic to include in Base.metadata
 from app.models.user import User
 from app.models.habit import Habit
+from app.models.habit_completion import HabitCompletion 
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
