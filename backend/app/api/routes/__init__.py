@@ -1,8 +1,9 @@
 from fastapi import APIRouter
-from .health import router as health_router
-from .db_check import router as db_check_router
+
 from .auth import router as auth_router
+from .db_check import router as db_check_router
 from .habits import router as habit_router
+from .health import router as health_router
 
 api_router = APIRouter()
 

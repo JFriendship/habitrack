@@ -8,10 +8,11 @@ from alembic import context
 from app.core.config import settings
 from app.db.database import Base
 
-# imports for alembic to include in Base.metadata
-from app.models.user import User
-from app.models.habit import Habit
-from app.models.habit_completion import HabitCompletion 
+# imports for alembic to include in Base.metadata           
+# These noqa: F401 comments were added to prevent ruff from deleting these tables (unused imports)
+from app.models.user import User  # noqa: F401
+from app.models.habit import Habit  # noqa: F401
+from app.models.habit_completion import HabitCompletion  # noqa: F401
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

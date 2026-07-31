@@ -3,7 +3,10 @@ from sqlalchemy.orm import Session
 
 from app.models.habit import Habit
 
-def create_habit(db: Session, name: str, description: str | None, user_id: int) -> Habit:
+
+def create_habit(
+    db: Session, name: str, description: str | None, user_id: int
+) -> Habit:
     """
     Creates a new Habit object and stores it in the database
 
@@ -24,6 +27,7 @@ def create_habit(db: Session, name: str, description: str | None, user_id: int) 
     db.refresh(habit)
 
     return habit
+
 
 def update_habit(db: Session, habit: Habit, name: str, description: str) -> Habit:
     """
@@ -47,6 +51,7 @@ def update_habit(db: Session, habit: Habit, name: str, description: str) -> Habi
 
     return habit
 
+
 def delete_habit(db: Session, habit: Habit) -> None:
     """
     Deletes a habit from the database
@@ -58,9 +63,10 @@ def delete_habit(db: Session, habit: Habit) -> None:
     db.delete(habit)
     db.commit()
 
+
 def get_habits_by_user_id(
-        db: Session,
-        user_id: int,
+    db: Session,
+    user_id: int,
 ) -> list[Habit]:
     """
     Retrieves all the habits owned by a user
@@ -68,13 +74,14 @@ def get_habits_by_user_id(
     Args:
         db: An sqlalchemy.orm database session
         user_id: The id of the user
-    
+
     Returns:
         A list of Habit objects associated with the provided user id
     """
     stmt = select(Habit).where(Habit.user_id == user_id)
 
     return list(db.scalars(stmt).all())
+
 
 def get_habit_by_id(db: Session, habit_id: int) -> Habit | None:
     """
@@ -83,9 +90,8 @@ def get_habit_by_id(db: Session, habit_id: int) -> Habit | None:
     Args:
         db: An sqlalchemy.orm database session
         habit_id: The id of a habit in the database
-    
+
     Returns:
         A Habit object that contains the habit's information
     """
     return db.get(Habit, habit_id)
-

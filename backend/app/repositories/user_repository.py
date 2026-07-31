@@ -1,6 +1,8 @@
-from sqlalchemy.orm import Session
 from sqlalchemy import select
+from sqlalchemy.orm import Session
+
 from app.models.user import User
+
 
 def get_user_by_email(db: Session, email: str) -> User | None:
     """
@@ -9,7 +11,7 @@ def get_user_by_email(db: Session, email: str) -> User | None:
     Args:
         db: A database connection
         email: A user's email
-    
+
     Returns:
         A User's database information or None
     """
@@ -18,6 +20,7 @@ def get_user_by_email(db: Session, email: str) -> User | None:
 
     return db.scalar(stmt)  # returns None if the user isn't found
 
+
 def get_user_by_username(db: Session, username: str) -> User | None:
     """
     Check if a user username exists in the database and returns the user.
@@ -25,7 +28,7 @@ def get_user_by_username(db: Session, username: str) -> User | None:
     Args:
         db: A database connection
         username: A user's username
-    
+
     Returns:
         A User's database information or None
     """
@@ -34,6 +37,7 @@ def get_user_by_username(db: Session, username: str) -> User | None:
 
     return db.scalar(stmt)
 
+
 def get_user_by_id(db: Session, user_id: int) -> User | None:
     """
     Check if a user id exists in the database and returns the user.
@@ -41,14 +45,15 @@ def get_user_by_id(db: Session, user_id: int) -> User | None:
     Args:
         db: A database connection
         user_id: A user's id
-    
+
     Returns:
         A User's database information or None
     """
-    
+
     stmt = select(User).where(User.id == user_id)
 
     return db.scalar(stmt)  # returns None if the user isn't found
+
 
 def create_user(db: Session, username: str, email: str, hashed_password: str) -> User:
     """

@@ -1,19 +1,25 @@
 from sqlalchemy.orm import Session
-from app.models.user import User
-from app.schemas.user import UserCreate
-from app.repositories.user_repository import get_user_by_email, get_user_by_username, create_user
+
 from app.core.security import hash_password, verify_password
+from app.models.user import User
+from app.repositories.user_repository import (
+    create_user,
+    get_user_by_email,
+    get_user_by_username,
+)
+from app.schemas.user import UserCreate
+
 
 def register_user(db: Session, user_create: UserCreate) -> User | None:
     """
-        Registers a new user into the database.
+    Registers a new user into the database.
 
-        Args:
-            db: The database session
-            user_create: Contains the user's username, email, and password information.
+    Args:
+        db: The database session
+        user_create: Contains the user's username, email, and password information.
 
-        Returns:
-            A new User object with the user's information or None
+    Returns:
+        A new User object with the user's information or None
     """
     if get_user_by_email(db, user_create.email):
         raise EmailAlreadyExistsError
@@ -29,6 +35,7 @@ def register_user(db: Session, user_create: UserCreate) -> User | None:
             hashed_password=hashed_password,
         )
         return user
+
 
 def authenticate_user(db: Session, email: str, password: str) -> User | None:
     """
@@ -57,12 +64,11 @@ def authenticate_user(db: Session, email: str, password: str) -> User | None:
 # Exceptions
 class EmailAlreadyExistsError(Exception):
     """The provided email already exists in the database"""
-    pass
+
 
 class UsernameAlreadyExistsError(Exception):
     """The provided username already exists in the database"""
-    pass
+
 
 class EmailDoesNotExistError(Exception):
     """The provided email does not exist in the database"""
-    pass

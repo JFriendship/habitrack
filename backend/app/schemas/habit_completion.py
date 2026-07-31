@@ -1,4 +1,5 @@
 from datetime import date
+
 from pydantic import BaseModel
 
 
@@ -9,6 +10,6 @@ class HabitCompletionRead(BaseModel):
 
     model_config = {"from_attributes": True}
 
+
 class HabitCompletionStatusRead(BaseModel):
     completed: bool
-    

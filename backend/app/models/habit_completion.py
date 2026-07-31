@@ -1,8 +1,10 @@
 from datetime import date
-from sqlalchemy import Date, UniqueConstraint, ForeignKey
+
+from sqlalchemy import Date, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.database import Base
+
 
 class HabitCompletion(Base):
     __tablename__ = "habit_completions"
@@ -12,8 +14,6 @@ class HabitCompletion(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     habit_id: Mapped[int] = mapped_column(
-        ForeignKey("habits.id", ondelete="CASCADE"),
-        nullable=False,
-        index=True
+        ForeignKey("habits.id", ondelete="CASCADE"), nullable=False, index=True
     )
     completed_date: Mapped[date] = mapped_column(Date, nullable=False, index=True)

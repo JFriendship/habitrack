@@ -1,4 +1,5 @@
 from datetime import date
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
@@ -7,20 +8,21 @@ from app.db.dependencies import get_db
 from app.models.user import User
 from app.schemas.habit import HabitCreate, HabitRead, HabitUpdate
 from app.schemas.habit_completion import HabitCompletionRead, HabitCompletionStatusRead
-from app.services.habit_service import (
-    create_habit_for_user,
-    get_user_habits,
-    update_user_habit,
-    delete_user_habit,
-)
 from app.services.habit_completion_service import (
+    get_habit_completion_history,
+    habit_completed_on_date,
     mark_habit_complete,
     unmark_habit_complete,
-    get_habit_completion_history,
-    habit_completed_on_date
+)
+from app.services.habit_service import (
+    create_habit_for_user,
+    delete_user_habit,
+    get_user_habits,
+    update_user_habit,
 )
 
 router = APIRouter(prefix="/habits", tags=["habits"])
+
 
 @router.post("", response_model=HabitRead, status_code=201)
 def create_habit(
@@ -36,7 +38,9 @@ def create_habit(
 
 
 @router.get("", response_model=list[HabitRead])
-def get_habits(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def get_habits(
+    db: Session = Depends(get_db), current_user: User = Depends(get_current_user)
+):
     return get_user_habits(db=db, user_id=current_user.id)
 
 
@@ -68,7 +72,9 @@ def complete_habit(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    habit_completion = mark_habit_complete(db=db, habit_id=habit_id, user_id=current_user.id)
+    habit_completion = mark_habit_complete(
+        db=db, habit_id=habit_id, user_id=current_user.id
+    )
     print(habit_completion)
     return habit_completion
 
