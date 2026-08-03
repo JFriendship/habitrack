@@ -8,7 +8,7 @@ class HabitCreate(BaseModel):
         min_length=const.MIN_HABIT_NAME_LENGTH, max_length=const.MAX_HABIT_NAME_LENGTH
     )
     description: str = Field(
-        default=None, max_length=const.MAX_HABIT_DESCRIPTION_LENGTH
+        default="", max_length=const.MAX_HABIT_DESCRIPTION_LENGTH
     )
 
 
@@ -26,5 +26,5 @@ class HabitUpdate(BaseModel):
         min_length=const.MIN_HABIT_NAME_LENGTH, max_length=const.MAX_HABIT_NAME_LENGTH
     )
     description: str = Field(
-        default=None, max_length=const.MAX_HABIT_DESCRIPTION_LENGTH
+        default="", max_length=const.MAX_HABIT_DESCRIPTION_LENGTH
     )
