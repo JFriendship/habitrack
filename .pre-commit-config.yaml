@@ -1,6 +1,7 @@
 repos:
   - repo: local
     hooks:
+      # -=| BACKEND |=-
       - id: ruff-check-backend
         name: ruff check (backend)
         entry: ruff check --config backend/pyproject.toml --force-exclude --fix
@@ -14,3 +15,11 @@ repos:
         language: system
         types: [python]
         files: ^backend/
+
+      # -=| FRONTEND |=-
+      - id: eslint-frontend
+        name: ESLint (frontend)
+        entry: npx eslint --fix
+        language: system
+        files: ^frontend/.*\.(js|jsx|ts|tsx)$
+        pass_filenames: true
