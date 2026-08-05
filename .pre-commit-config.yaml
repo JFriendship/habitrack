@@ -23,3 +23,10 @@ repos:
         language: system
         files: ^frontend/.*\.(js|jsx|ts|tsx)$
         pass_filenames: true
+
+      - id: prettier-frontend
+        name: Prettier (frontend)
+        entry: npx prettier --write --ignore-unknown
+        language: system
+        files: ^frontend/.*\.(js|jsx|ts|tsx|json|css|md|html)$
+        pass_filenames: true
