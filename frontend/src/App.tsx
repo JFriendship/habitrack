@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router";
 import "./App.css";
 
 function App() {
@@ -13,12 +14,12 @@ function App() {
             Log In
           </button>
           or 
-          <button
-            type="button"
+          <Link
+            to="/sign-up"
             className="counter"
           >
             Sign Up
-          </button>
+          </Link>
         </div>
       </section>
     </>
