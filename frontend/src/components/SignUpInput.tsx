@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+import "./SignUpInput.css"
+
 export default function SignUpInput() {
     const [signUpData, setSignUpData] = useState({
         email: '',
@@ -44,34 +46,47 @@ export default function SignUpInput() {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text"
-                    name="email"
-                    value={signUpData.email}
-                    onChange={handleChange}
-                    placeholder="Email"
+        <div >
+            <form className="sign-up-form" onSubmit={handleSubmit}>
+                <label className="input-label" htmlFor="email"> 
+                    Email 
+                    <input 
+                        type="email"
+                        name="email"
+                        value={signUpData.email}
+                        onChange={handleChange}
+                        placeholder="Email"
+                        className="user-info-input"
+                        id="email"
+                    />
+                </label>
+                <label className="input-label" htmlFor="username"> 
+                    Username 
+                    <input 
+                        type="text"
+                        name="username"
+                        value={signUpData.username}
+                        onChange={handleChange}
+                        placeholder="Username"
+                        className="user-info-input"
+                        id="username"
+                    />
+                </label>
 
-                />
+                <label className="input-label" htmlFor="password"> 
+                    Password 
+                    <input 
+                        type="password"
+                        name="password"
+                        value={signUpData.password}
+                        onChange={handleChange}
+                        placeholder="Password"
+                        className="user-info-input"
+                        id="password"
+                    />
+                </label>
 
-                <input 
-                    type="text"
-                    name="username"
-                    value={signUpData.username}
-                    onChange={handleChange}
-                    placeholder="Username"
-                />
-
-                <input 
-                    type="password"
-                    name="password"
-                    value={signUpData.password}
-                    onChange={handleChange}
-                    placeholder="Password"
-                />
-
-                <button type="submit">
+                <button className="user-info-submit-button" type="submit">
                     Sign Up
                 </button>
 
