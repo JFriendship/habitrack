@@ -5,7 +5,7 @@ import "./LoginInput.css"
 
 export default function LoginInput() {
     const [loginData, setLoginData] = useState({
-        username: '',
+        email: '',
         password: ''
     });
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function LoginInput() {
                 },
                 // using URLSearchParams instead of JSON.stringify() due to FastAPI and pydantic validation
                 body: new URLSearchParams({
-                    username: loginData.username, password: loginData.password
+                    username: loginData.email, password: loginData.password // required to accept a username property
                 })
             });
 
@@ -54,16 +54,16 @@ export default function LoginInput() {
     return (
         <div>
             <form className="login-form" onSubmit={handleSubmit}>
-                <label className="login-label" htmlFor="username">
-                    Username
+                <label className="login-label" htmlFor="email">
+                    Email
                     <input
-                        type="username"
-                        name="username"
-                        value={loginData.username}
+                        type="email"
+                        name="email"
+                        value={loginData.email}
                         onChange={handleChange}
-                        placeholder="Username"
+                        placeholder="Email"
                         className="login-input"
-                        id="username"
+                        id="email"
                     />
                 </label>
 
