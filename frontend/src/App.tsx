@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link} from "react-router";
 import "./App.css";
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
           <p>A tidy place to track your habits.</p>
         </div>
         <div>
-          <button type="button" className="counter">
+          <Link to="/login" className="counter">
             Log In
-          </button>
+          </Link>
           or 
           <Link
             to="/sign-up"

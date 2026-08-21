@@ -30,7 +30,7 @@ export default function SignUpInput() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ username: signUpData.username, email: signUpData.email, password: signUpData.password}),
+                body: JSON.stringify({ email: signUpData.email, username: signUpData.username, password: signUpData.password}),
             });
 
             if (response.ok) {
@@ -46,7 +46,7 @@ export default function SignUpInput() {
     };
 
     return (
-        <div >
+        <div>
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <label className="input-label" htmlFor="email"> 
                     Email 
