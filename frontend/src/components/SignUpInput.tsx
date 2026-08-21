@@ -46,7 +46,7 @@ export default function SignUpInput() {
     };
 
     return (
-        <div >
+        <div>
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <label className="input-label" htmlFor="email"> 
                     Email 

@@ -1,7 +1,11 @@
+import LoginInput from "../components/LoginInput";
 
 
 export default function Login() {
     return (
-        <div> LOGIN PAGE </div>
+        <div className="login-page-wrapper">
+            <div> Login </div>
+            <LoginInput />
+        </div>
     )
 }
