@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+import "./LoginInput.css"
 
 export default function LoginInput() {
     const [loginData, setLoginData] = useState({
@@ -53,8 +54,8 @@ export default function LoginInput() {
     return (
         <div>
             <form className="login-form" onSubmit={handleSubmit}>
-                <label className="username-text" htmlFor="username">
-                    Email
+                <label className="login-label" htmlFor="username">
+                    Username
                     <input
                         type="username"
                         name="username"
@@ -66,7 +67,7 @@ export default function LoginInput() {
                     />
                 </label>
 
-                <label className="password-text" htmlFor="password">
+                <label className="login-label" htmlFor="password">
                     Password
                     <input 
                         type="password"

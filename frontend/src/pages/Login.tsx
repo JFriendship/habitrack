@@ -1,5 +1,5 @@
 import LoginInput from "../components/LoginInput";
-
+import "./Login.css"
 
 export default function Login() {
     return (
